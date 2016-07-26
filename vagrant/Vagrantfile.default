@@ -1,0 +1,22 @@
+VM_BOX_NAME = ENV['VM_BOX_NAME'] || "ubuntu/xenial64"
+VM_MEMORY = ENV['VM_MEMORY'] || "512"
+APP_DATA = ENV['APP_DATA']
+
+
+Vagrant.configure("2") do |config|
+  config.vm.box = VM_BOX_NAME
+  config.vm.network :forwarded_port, :host => 8888, :guest => 3333
+
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", VM_MEMORY]
+  end
+
+  if Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/default/*/id").empty?
+    config.vm.provision :shell,path: "vagrant/provision.sh"
+  end
+
+  if !APP_DATA.nil?
+    config.vm.synced_folder APP_DATA, "/data"
+  end
+end
+
