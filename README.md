@@ -33,6 +33,7 @@ Once things are working, can also:
 
 ##Notes
 
+* Switched back to Ubuntu 14.04 (Trusty) since 16.04 not yet officially listed as supporeted by NodeJS.
 * Using the vagrant-boilerplate (messed this up initially, so I'll have write down how to do this properly).
 * Can creaet an UI similar to danbooru imageboards initially and go from there.
 
