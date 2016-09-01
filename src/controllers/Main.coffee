@@ -3,6 +3,8 @@ exports.setup = (app) ->
   return
 
 defaultRes = (req, res) ->
-  res.send 200, 'happy days are here again'
+  res
+  .status 200
+  .send 'happy days are here again'
   return
 
