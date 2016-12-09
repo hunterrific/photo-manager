@@ -1,6 +1,6 @@
-Milestone 3 (In Progress)
+Milestone 3
 
-Set up unit testing for server using Mocha.
+Set up unit testing for server using Mocha, Istanbul, and Grunt.
 
 Milestone 2
 

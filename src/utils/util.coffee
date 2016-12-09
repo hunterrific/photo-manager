@@ -1,0 +1,3 @@
+exports.testTrue = ->
+  return true
+

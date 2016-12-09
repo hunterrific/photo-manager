@@ -25,6 +25,7 @@ Also, this would be a good chance to refine existing skills and learn some new s
 * Use MongoDB to store image metadata.
 * Use NodeJS, ExpressJS, and CoffeeScript to create a REST API for the metadata.
 * Use AngularJS 2 for frontend (maybe use material design later).
+  * May use vue.js instead for faster development.
 
 Once things are working, can also:
 

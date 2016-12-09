@@ -2,21 +2,46 @@
   "name": "photo-manager",
   "version": "0.0.1",
   "description": "A photo management application that can be easily setup and imported via virtual machines.  A danbooru type interface allows photos to be tagged, rated, commented on, and searched.  Although this is a webapp, it's meant to be accessible only to a single user (me).",
+  "license": "GPL-3.0",
+  "repository" :
+  { "type" : "git",
+    "url" : "https://github.com/hunterrific/photo-manager"
+  },
   "dependencies": {
     "express": "*",
     "compression": "*",
     "serve-favicon": "*",
     "morgan": "*",
     "body-parser": "*",
-    "method-override": "*",
     "errorhandler": "*",
     "coffee-script": "*",
     "mongodb": "*",
     "request": "*",
     "nconf": "*",
     "async": "*",
+    "fs-extra": "*",
     "moment": "*",
     "path": "*",
-    "simple-errors": "*"
+    "simple-errors": "*",
+    "vue": "*"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "ibrik": "*",
+    "istanbul": "*",
+    "mocha": "*",
+    "rewire": "*",
+    "sinon": "*",
+    "xunit-file": "*",
+    "grunt": "*",
+    "grunt-concurrent": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-coffee": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-mocha-istanbul": "*",
+    "grunt-develop": "*",
+    "grunt-rev": "*",
+    "load-grunt-tasks": "*",
+    "time-grunt": "*"
   }
 }

@@ -3,7 +3,6 @@ compression = require 'compression'
 #favicon = require 'serve-favicon'
 morgan = require 'morgan'
 bodyParser = require 'body-parser'
-methodOverride = require 'method-override'
 errorhandler = require 'errorhandler'
 http = require 'http'
 path = require 'path'
@@ -18,12 +17,11 @@ setupExpressApp = (config) ->
   app = express()
   app.use compression()
   #app.use favicon()
+  # morgan is a auto logger; dev is a predefined log format; also default, etc.; can customize
+  # for actual logging to a file, use winston
   app.use morgan('dev')
-  #following line deprecated... need to call separately
-  #app.use bodyParser()
   app.use bodyParser.urlencoded({extended: true})
   app.use bodyParser.json()
-  app.use methodOverride()
   app.use express.static(path.resolve(config.get('server:docDir')))
 
   if config.env.development
