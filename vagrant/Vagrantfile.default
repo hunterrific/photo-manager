@@ -6,6 +6,8 @@ APP_DATA = ENV['APP_DATA']
 Vagrant.configure("2") do |config|
   config.vm.box = VM_BOX_NAME
   config.vm.network :forwarded_port, :host => 8888, :guest => 3333
+  config.vm.network :forwarded_port, :host => 9000, :guest => 9000
+  config.vm.network :forwarded_port, :host => 35729, :guest => 35729
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", VM_MEMORY]
