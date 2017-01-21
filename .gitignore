@@ -2,6 +2,7 @@
 coverage/
 node_modules/
 public/
+target/
 ubuntu-xenial-16.04-cloudimg-console.log
 Vagrantfile
 xunit.xml
