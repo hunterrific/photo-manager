@@ -19,15 +19,23 @@ module.exports = (grunt) ->
           destBase + destPath.replace(/\.coffee$/, '.js')
         )
     copy:
-      app:
+      app_html_js:
         files: [
           {
             expand: true
             flatten: false
-            cwd: 'app/'
+            cwd: 'app-html-js/'
             src: [ '**/*' ]
             dest: 'public/'
           }
+        ]
+      images:
+        files: [
+          expand: true
+          flatten: false
+          cwd: 'app-images'
+          src: [ '**/*' ]
+          dest: 'public/images/'
         ]
     develop:
       server:
@@ -52,8 +60,8 @@ module.exports = (grunt) ->
           'coffee:server'
           'develop'
         ]
-      client:
-        files: [ 'app/**/*' ]
+      html_js:
+        files: [ 'app-html-js/**/*' ]
         tasks: [
           'clean:client'
           'copy'
@@ -102,4 +110,3 @@ module.exports = (grunt) ->
   grunt.registerTask 'default', [ 'coffee', 'copy' ]
 
   return
-

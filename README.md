@@ -24,8 +24,8 @@ Also, this would be a good chance to refine existing skills and learn some new s
 
 * Use MongoDB to store image metadata.
 * Use NodeJS, ExpressJS, and CoffeeScript to create a REST API for the metadata.
-* Use AngularJS 2 for frontend (maybe use material design later).
-  * May use vue.js instead for faster development.
+* Use VueJS for frontend.
+  * May use AngularJS v2 later (with material design).
 
 Once things are working, can also:
 
@@ -36,5 +36,8 @@ Once things are working, can also:
 
 * Switched back to Ubuntu 14.04 (Trusty) since 16.04 not yet officially listed as supporeted by NodeJS.
 * Using the vagrant-boilerplate (messed this up initially, so I'll have write down how to do this properly).
-* Can creaet an UI similar to danbooru imageboards initially and go from there.
-
+* Can create an UI similar to danbooru image boards initially and go from there.
+* Backend will use CoffeeScript for now
+* Multiple versions of frontend (communicate with backend via API; should be decoupled)
+  * HTML + JavaScript
+  * PUG + CoffeeScript

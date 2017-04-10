@@ -1,6 +1,6 @@
 express = require 'express'
 compression = require 'compression'
-#favicon = require 'serve-favicon'
+favicon = require 'serve-favicon'
 morgan = require 'morgan'
 bodyParser = require 'body-parser'
 errorhandler = require 'errorhandler'
@@ -16,9 +16,9 @@ process.on 'uncaughtException', (err) ->
 setupExpressApp = (config) ->
   app = express()
   app.use compression()
-  #app.use favicon()
+  app.use favicon(path.join(config.get('server:docDir'), 'images/favicon.ico'))
   # morgan is a auto logger; dev is a predefined log format; also default, etc.; can customize
-  # for actual logging to a file, use winston
+  # alternative is to use winston
   app.use morgan('dev')
   app.use bodyParser.urlencoded({extended: true})
   app.use bodyParser.json()
@@ -52,4 +52,3 @@ configureMockControllers app
 
 server.listen config.get('server:port'), ->
   console.log 'Express server listening on port ' + config.get('server:port')
-
