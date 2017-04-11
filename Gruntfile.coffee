@@ -40,15 +40,6 @@ module.exports = (grunt) ->
     develop:
       server:
         file: 'target/build/src/server.js'
-    connect:
-      options:
-        port: 9000
-        livereload: reloadPort
-        hostname: '*'
-      livereload:
-        options:
-          open: false
-          base: [ 'public/' ]
     watch:
       options:
         nospawn: true
@@ -104,9 +95,14 @@ module.exports = (grunt) ->
         done reloaded
     , 500
 
+  grunt.registerTask 'usage', 'Options when running Grunt...', ->
+    grunt.log.writeln 'dev - clean, coffee, copy, develop, watch'
+    grunt.log.writeln 'server - develop, watch'
+    grunt.log.writeln 'test - mocha_istanbul:coverage'
+
   grunt.registerTask 'dev', [ 'clean', 'coffee', 'copy', 'develop', 'watch' ]
   grunt.registerTask 'server', [ 'develop', 'watch' ]
   grunt.registerTask 'test', 'mocha_istanbul:coverage'
-  grunt.registerTask 'default', [ 'coffee', 'copy' ]
+  grunt.registerTask 'default', [ 'usage' ]
 
   return

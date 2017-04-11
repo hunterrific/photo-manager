@@ -37,7 +37,6 @@
     "grunt-concurrent": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-coffee": "*",
-    "grunt-contrib-connect": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-watch": "*",
     "grunt-mocha-istanbul": "*",
