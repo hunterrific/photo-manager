@@ -1,6 +1,7 @@
 .vagrant/
 coverage/
 node_modules/
+private/
 public/
 target/
 ubuntu-xenial-16.04-cloudimg-console.log

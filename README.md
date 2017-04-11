@@ -41,3 +41,4 @@ Once things are working, can also:
 * Multiple versions of frontend (communicate with backend via API; should be decoupled)
   * HTML + JavaScript
   * PUG + CoffeeScript
+* Created private folder to store temporary scripts that are useful for development tasks.  Should not be part of project.
