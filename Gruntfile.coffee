@@ -6,6 +6,15 @@ module.exports = (grunt) ->
 
   reloadPort = 35729
 
+  # needed because grunt-contrib-pug functionality is limited to specifing individual files
+  _getFiles = (options) ->
+    path = require 'path'
+    files = {}
+    grunt.file.expand({ cwd: options.cwd}, options.wildcards + options.srcExt).forEach (relPath) ->
+      files[path.join(options.dest, relPath).replace(options.srcExt, options.destExt)] = [ path.join(options.cwd, relPath) ]
+      return
+    return files
+
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
     clean:
@@ -18,6 +27,14 @@ module.exports = (grunt) ->
         files: grunt.file.expandMapping(['src/**/*.coffee'], 'target/build/', rename: (destBase, destPath) ->
           destBase + destPath.replace(/\.coffee$/, '.js')
         )
+      glob_to_multiple: {
+        expand: true
+        flatten: false
+        cwd: 'app-pug-coffee/'
+        src: [ '**/*.coffee' ]
+        dest: 'public/'
+        ext: '.js'
+      }
     copy:
       app_html_js:
         files: [
@@ -29,14 +46,25 @@ module.exports = (grunt) ->
             dest: 'public/'
           }
         ]
-      images:
+      global:
         files: [
           expand: true
           flatten: false
-          cwd: 'app-images'
+          cwd: 'app-global'
           src: [ '**/*' ]
-          dest: 'public/images/'
+          dest: 'public/'
         ]
+    pug: {
+      compile: {
+        options: {
+          data: {
+            client: false
+            debug: true
+          }
+        }
+        files: _getFiles({ cwd: 'app-pug-coffee', dest: 'public', wildcards: '**/*', srcExt: '.pug', destExt: '.html' })
+      }
+    }
     develop:
       server:
         file: 'target/build/src/server.js'
@@ -96,11 +124,12 @@ module.exports = (grunt) ->
     , 500
 
   grunt.registerTask 'usage', 'Options when running Grunt...', ->
-    grunt.log.writeln 'dev - clean, coffee, copy, develop, watch'
+    grunt.log.writeln 'dev_html_js - clean, coffee:server, copy, develop, watch'
     grunt.log.writeln 'server - develop, watch'
     grunt.log.writeln 'test - mocha_istanbul:coverage'
 
-  grunt.registerTask 'dev', [ 'clean', 'coffee', 'copy', 'develop', 'watch' ]
+  grunt.registerTask 'dev_html_js', [ 'clean', 'coffee:server', 'copy', 'develop', 'watch' ]
+  grunt.registerTask 'dev_pug_coffee', [ 'clean', 'coffee', 'copy:global', 'pug', 'develop', 'watch' ]
   grunt.registerTask 'server', [ 'develop', 'watch' ]
   grunt.registerTask 'test', 'mocha_istanbul:coverage'
   grunt.registerTask 'default', [ 'usage' ]
