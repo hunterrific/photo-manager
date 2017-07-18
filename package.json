@@ -25,7 +25,9 @@
     "moment-timezone": "*",
     "path": "*",
     "simple-errors": "*",
-    "vue": "*"
+    "uuid": "*",
+    "vue": "*",
+    "valid-url": "*"
   },
   "devDependencies": {
     "chai": "*",
